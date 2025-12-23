@@ -19,14 +19,14 @@ export interface UpdateTodoRequest {
 }
 
 export const getTodosApi = async (): Promise<Todo[]> => {
-  const { data } = await api.get<Todo[]>("/todos");
+  const { data } = await api.get<Todo[]>("/api/todos");
   return data;
 };
 
 export const createTodoApi = async (
   payload: CreateTodoRequest,
 ): Promise<Todo> => {
-  const { data } = await api.post<Todo>("/todos", payload);
+  const { data } = await api.post<Todo>("/api/todos", payload);
   return data;
 };
 
@@ -34,10 +34,10 @@ export const updateTodoApi = async (
   id: number,
   payload: UpdateTodoRequest,
 ): Promise<Todo> => {
-  const { data } = await api.put<Todo>(`/todos/${id}`, payload);
+  const { data } = await api.put<Todo>(`/api/todos/${id}`, payload);
   return data;
 };
 
 export const deleteTodoApi = async (id: number): Promise<void> => {
-  await api.delete(`/todos/${id}`);
+  await api.delete(`/api/todos/${id}`);
 };
