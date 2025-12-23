@@ -11,10 +11,17 @@ export interface RegisterRequest {
   password: string;
 }
 
-export const loginApi = (data: LoginRequest) => {
-  return api.post("/api/auth/login", data);
+export interface AuthResponse {
+  token: string;
+}
+
+export const loginApi = async (
+  payload: LoginRequest,
+): Promise<AuthResponse> => {
+  const { data } = await api.post<AuthResponse>("/api/auth/login", payload);
+  return data;
 };
 
-export const registerApi = (data: RegisterRequest) => {
-  return api.post("/api/auth/register", data);
+export const registerApi = async (payload: RegisterRequest): Promise<void> => {
+  await api.post("/api/auth/register", payload);
 };

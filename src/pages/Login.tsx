@@ -23,13 +23,14 @@ const LoginPage = () => {
     e.preventDefault();
 
     try {
+      console.log("masuk 1");
       const res = await loginApi(form);
-      const token = res.data.data.token;
-
+      const token = res.data.token;
       login(token, form.email);
       toast.success("Login successful");
       navigate("/todos");
     } catch (err) {
+      console.log("masuk 2");
       if (axios.isAxiosError(err)) {
         toast.error(err.response?.data?.message || "Login failed");
       } else {
