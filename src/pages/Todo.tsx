@@ -2,6 +2,7 @@ import Header from "../components/Header.tsx";
 import { useEffect } from "react";
 import { useTodoStore } from "../store/todoStore.ts";
 import AddTodoForm from "../components/AddTodoForm.tsx";
+import TodoItem from "../components/TodoItem.tsx";
 
 const TodoPage = () => {
   const { todos, fetchTodos } = useTodoStore();
@@ -18,9 +19,7 @@ const TodoPage = () => {
         <AddTodoForm />
         <ul>
           {todos.map((todo) => (
-            <li key={todo.id}>
-              {todo.title} - {todo.completed ? "Done" : "Pending"}
-            </li>
+            <TodoItem key={todo.id} todo={todo} />
           ))}
         </ul>
       </main>
