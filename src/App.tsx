@@ -1,7 +1,13 @@
+import { Toaster } from "react-hot-toast";
+import { AppRouter } from "./router/AppRouter.tsx";
+
 function App() {
   return (
     <>
-      <h1>Hello World !</h1>
+      <div className="container mx-auto">
+        <AppRouter />
+      </div>
+      <Toaster position="top-right" reverseOrder={false} />
     </>
   );
 }
