@@ -62,7 +62,7 @@ const LoginPage = () => {
                     id="email"
                     value={form.email}
                     onChange={handleChange}
-                    placeholder="name@company.com"
+                    placeholder="name@mail.com"
                     required
                   />
                 </div>
@@ -86,7 +86,7 @@ const LoginPage = () => {
 
                 <button
                   type="submit"
-                  className="w-full text-white bg-orange-600 hover:opacity-90 cursor-pointer shadow-xs leading-5 rounded-md text-sm px-4 py-2.5 focus:outline-none"
+                  className="w-full text-white bg-blue-600 hover:opacity-90 cursor-pointer shadow-xs leading-5 rounded-md text-sm px-4 py-2.5 focus:outline-none"
                 >
                   Sign in
                 </button>
