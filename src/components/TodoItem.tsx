@@ -1,12 +1,14 @@
 import { useTodoStore } from "../store/todoStore";
 import type { Todo } from "../api/todoApi.ts";
+import { useState } from "react";
 
 interface Props {
   todo: Todo;
 }
 
 const TodoItem = ({ todo }: Props) => {
-  const { updateTodo, loading } = useTodoStore();
+  const { updateTodo, deleteTodo, loading } = useTodoStore();
+  const [isEdit, setIsEdit] = useState(false);
 
   const handleToggle = async () => {
     await updateTodo(todo.id, {
@@ -15,20 +17,45 @@ const TodoItem = ({ todo }: Props) => {
     });
   };
 
-  return (
-    <li>
-      <input
-        type="checkbox"
-        checked={todo.completed}
-        onChange={handleToggle}
-        disabled={loading}
-      />
+  const handleDelete = async () => {
+    if (!confirm("Delete this todo?")) return;
+    await deleteTodo(todo.id);
+  };
 
-      <span>
-        {todo.title}
-        {todo.completed && " ✔"}
-      </span>
-    </li>
+  return (
+    <>
+      <div onClick={() => setIsEdit(!isEdit)}>
+        {isEdit ? (
+          <li style={{ cursor: "pointer", background: "lightgray" }}>
+            <input
+              type="checkbox"
+              checked={todo.completed}
+              onChange={handleToggle}
+              disabled={loading}
+            />
+            <label>Done</label>
+            <br />
+
+            <input type="text" value={todo.title} disabled={loading} />
+            <br />
+            <textarea value={todo.description} disabled={loading} />
+            <span>{todo.completed && " ✔"}</span>
+            <br />
+            <button>Update</button>
+            <button onClick={handleDelete}>Delete</button>
+            <br />
+          </li>
+        ) : (
+          <li style={{ cursor: "pointer", background: "lightgray" }}>
+            <label>Done</label>
+            <span>{todo.title}</span>
+            <br />
+            <span>{todo.description}</span>
+            <span>{todo.completed && " ✔"}</span>
+          </li>
+        )}
+      </div>
+    </>
   );
 };
 
