@@ -1,18 +1,30 @@
 import Header from "../components/Header.tsx";
 import Footer from "../components/Footer.tsx";
 import { useEffect } from "react";
-import { getTodosApi } from "../api/todoApi.ts";
+import { useTodoStore } from "../store/todoStore.ts";
 
 const TodoPage = () => {
+  const { todos, fetchTodos, loading, error } = useTodoStore();
+
   useEffect(() => {
-    getTodosApi().then(console.log).catch(console.error);
+    fetchTodos();
   }, []);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>{error}</p>;
 
   return (
     <>
       <Header />
       <main>
-        <h1>Todo Page</h1>
+        <h2>My Todos</h2>
+        <ul>
+          {todos.map((todo) => (
+            <li key={todo.id}>
+              {todo.title} - {todo.completed ? "Done" : "Pending"}
+            </li>
+          ))}
+        </ul>
       </main>
       <Footer />
     </>

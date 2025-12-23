@@ -20,7 +20,7 @@ export interface UpdateTodoRequest {
 
 export const getTodosApi = async (): Promise<Todo[]> => {
   const { data } = await api.get<Todo[]>("/api/todos");
-  return data;
+  return data.data;
 };
 
 export const createTodoApi = async (
