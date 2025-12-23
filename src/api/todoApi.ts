@@ -27,7 +27,7 @@ export const createTodoApi = async (
   payload: CreateTodoRequest,
 ): Promise<Todo> => {
   const { data } = await api.post<Todo>("/api/todos", payload);
-  return data;
+  return data.data;
 };
 
 export const updateTodoApi = async (
@@ -35,7 +35,7 @@ export const updateTodoApi = async (
   payload: UpdateTodoRequest,
 ): Promise<Todo> => {
   const { data } = await api.put<Todo>(`/api/todos/${id}`, payload);
-  return data;
+  return data.data;
 };
 
 export const deleteTodoApi = async (id: number): Promise<void> => {

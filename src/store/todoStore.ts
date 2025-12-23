@@ -80,9 +80,6 @@ export const useTodoStore = create<TodoState>((set, get) => ({
     }
   },
 
-  /* =======================
-     RESET STORE
-  ======================= */
   reset: () => {
     set({ todos: [], loading: false, error: null });
   },
