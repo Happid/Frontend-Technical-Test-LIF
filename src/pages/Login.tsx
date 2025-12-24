@@ -9,7 +9,7 @@ import { useAuthStore } from "../store/authStore.ts";
 const LoginPage = () => {
   const navigate = useNavigate();
   const login = useAuthStore((state) => state.login);
-
+  const [isLoading, setIsLoading] = useState(false);
   const [form, setForm] = useState<LoginRequest>({
     email: "",
     password: "",
@@ -23,12 +23,15 @@ const LoginPage = () => {
     e.preventDefault();
 
     try {
+      setIsLoading(true);
       const res = await loginApi(form);
       const token = res.data.token;
       login(token, form.email, res.data.username);
       toast.success("Login successful");
       navigate("/todos");
+      setIsLoading(false);
     } catch (err) {
+      setIsLoading(false);
       if (axios.isAxiosError(err)) {
         toast.error(err.response?.data?.message || "Login failed");
       } else {
@@ -87,10 +90,11 @@ const LoginPage = () => {
                 </div>
 
                 <button
+                  disabled={isLoading}
                   type="submit"
                   className="w-full text-white bg-blue-600 hover:opacity-90 cursor-pointer shadow-xs leading-5 rounded-md text-sm px-4 py-2.5 focus:outline-none"
                 >
-                  Sign in
+                  {isLoading ? "Loading ..." : "Sign in"}
                 </button>
                 <p className="text-sm font-light text-gray-500">
                   Don’t have an account yet?{" "}
