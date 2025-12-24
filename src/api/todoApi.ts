@@ -1,5 +1,9 @@
 import api from "./axios";
 
+interface ApiResponse<T> {
+  data: T;
+}
+
 export interface Todo {
   id: number;
   title: string;
@@ -19,14 +23,14 @@ export interface UpdateTodoRequest {
 }
 
 export const getTodosApi = async (): Promise<Todo[]> => {
-  const { data } = await api.get<Todo[]>("/api/todos");
+  const { data } = await api.get<ApiResponse<Todo[]>>("/api/todos");
   return data.data;
 };
 
 export const createTodoApi = async (
   payload: CreateTodoRequest,
 ): Promise<Todo> => {
-  const { data } = await api.post<Todo>("/api/todos", payload);
+  const { data } = await api.post<ApiResponse<Todo>>("/api/todos", payload);
   return data.data;
 };
 
@@ -34,7 +38,10 @@ export const updateTodoApi = async (
   id: number,
   payload: UpdateTodoRequest,
 ): Promise<Todo> => {
-  const { data } = await api.put<Todo>(`/api/todos/${id}`, payload);
+  const { data } = await api.put<ApiResponse<Todo>>(
+    `/api/todos/${id}`,
+    payload,
+  );
   return data.data;
 };
 

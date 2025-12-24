@@ -7,7 +7,7 @@ const AddTodoForm = () => {
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const titleRef = useRef(null);
+  const titleRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();

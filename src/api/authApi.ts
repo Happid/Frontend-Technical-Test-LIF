@@ -15,9 +15,7 @@ export interface AuthResponse {
   token: string;
 }
 
-export const loginApi = async (
-  payload: LoginRequest,
-): Promise<AuthResponse> => {
+export const loginApi = async (payload: LoginRequest): Promise<any> => {
   const { data } = await api.post<AuthResponse>("/api/auth/login", payload);
   return data;
 };
