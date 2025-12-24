@@ -60,7 +60,9 @@ const RegisterPage = () => {
                     id="username"
                     value={form.username}
                     onChange={handleChange}
-                    placeholder="name@mail.com"
+                    placeholder="your username"
+                    minLength={3}
+                    maxLength={20}
                     required
                   />
                 </div>
@@ -78,6 +80,8 @@ const RegisterPage = () => {
                     value={form.email}
                     onChange={handleChange}
                     placeholder="name@mail.com"
+                    minLength={6}
+                    maxLength={30}
                     required
                   />
                 </div>
@@ -95,6 +99,8 @@ const RegisterPage = () => {
                     value={form.password}
                     onChange={handleChange}
                     placeholder="••••••••"
+                    minLength={4}
+                    maxLength={20}
                     required
                   />
                 </div>

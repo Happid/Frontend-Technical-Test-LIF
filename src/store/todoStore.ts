@@ -13,6 +13,7 @@ interface TodoState {
   todos: Todo[];
   loading: boolean;
   error: string | null;
+  success: string | null;
 
   fetchTodos: () => Promise<void>;
   addTodo: (payload: CreateTodoRequest) => Promise<void>;
@@ -25,6 +26,7 @@ export const useTodoStore = create<TodoState>((set, get) => ({
   todos: [],
   loading: false,
   error: null,
+  success: null,
 
   fetchTodos: async () => {
     try {
@@ -43,6 +45,7 @@ export const useTodoStore = create<TodoState>((set, get) => ({
       set({ loading: true, error: null });
       const newTodo = await createTodoApi(payload);
       set({ todos: [...get().todos, newTodo] });
+      set({ success: "Successfully Add New Todo !" });
     } catch (err: any) {
       set({ error: err?.response?.data?.message || "Failed to add todo" });
     } finally {
@@ -81,6 +84,6 @@ export const useTodoStore = create<TodoState>((set, get) => ({
   },
 
   reset: () => {
-    set({ todos: [], loading: false, error: null });
+    set({ todos: [], loading: false, error: null, success: null });
   },
 }));

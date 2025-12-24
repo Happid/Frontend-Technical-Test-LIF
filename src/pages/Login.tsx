@@ -23,14 +23,12 @@ const LoginPage = () => {
     e.preventDefault();
 
     try {
-      console.log("masuk 1");
       const res = await loginApi(form);
       const token = res.data.token;
-      login(token, form.email);
+      login(token, form.email, res.data.username);
       toast.success("Login successful");
       navigate("/todos");
     } catch (err) {
-      console.log("masuk 2");
       if (axios.isAxiosError(err)) {
         toast.error(err.response?.data?.message || "Login failed");
       } else {
@@ -63,6 +61,8 @@ const LoginPage = () => {
                     value={form.email}
                     onChange={handleChange}
                     placeholder="name@mail.com"
+                    maxLength={20}
+                    minLength={6}
                     required
                   />
                 </div>
@@ -80,6 +80,8 @@ const LoginPage = () => {
                     value={form.password}
                     onChange={handleChange}
                     placeholder="••••••••"
+                    maxLength={30}
+                    minLength={4}
                     required
                   />
                 </div>
