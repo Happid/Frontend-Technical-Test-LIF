@@ -6,7 +6,7 @@
 - Router (react-router-dom)
 - Integration with API using (Axios)
 - Backend Repository: https://github.com/Happid/Backend-Technical-Test-LIF
-- Live Demo for backend using `railway` for frontend using `vercel`
+- Live Demo for backend using `railway` for frontend using `vercel` https://frontend-technical-test-lif.vercel.app/login
 
 ## How To Run
 1. open frontend repository https://github.com/Happid/Frontend-Technical-Test-LIF
