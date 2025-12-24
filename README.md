@@ -6,7 +6,9 @@
 - Router (react-router-dom)
 - Integration with API using (Axios)
 - Backend Repository: https://github.com/Happid/Backend-Technical-Test-LIF
-- Live Demo for backend using `railway` for frontend using `vercel` https://frontend-technical-test-lif.vercel.app/login
+- Live Demo for backend using `railway` for frontend using `vercel`
+- `frontend: ` https://frontend-technical-test-lif.vercel.app/login
+- `backend: `https://backend-technical-test-lif-production.up.railway.app/
 
 ## How To Run
 1. open frontend repository https://github.com/Happid/Frontend-Technical-Test-LIF
@@ -39,8 +41,15 @@ npm install react-router-dom react-hot-toast axios zustand
 
 ## Feature
 ### Login Page
+![Login Page](https://res.cloudinary.com/dwzkwvgkz/image/upload/v1766557082/login_yfxtyg.png)
+
 ### Register Page
+![Register Page](https://res.cloudinary.com/dwzkwvgkz/image/upload/v1766557082/register_az93ap.png)
+
 ### Todo Page
+![Todo Page](https://res.cloudinary.com/dwzkwvgkz/image/upload/v1766557082/todo_iu4iso.png)
+![Todo Page](https://res.cloudinary.com/dwzkwvgkz/image/upload/v1766557082/edit-todo_cpyi2m.png)
+
 
 ## For Backend Documentation
 You can read at `API_DESIGN.md`
